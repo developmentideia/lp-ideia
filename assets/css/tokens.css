@@ -149,3 +149,17 @@
   /* Alvo mínimo de toque (CA-13) */
   --target-min: 2.75rem; /* 44 px */
 }
+
+/*
+ * Desktop (1024 a 1440): o v09 usa uma escala própria nessa faixa, que não sai
+ * da reta 390 a 1440 acima. Valores do Figma: H1 60/72/82, corpo 18/20/22,
+ * H3 de card 22/24/26 em 1024/1280/1440.
+ */
+@media (min-width: 1024px) {
+  :root {
+    --fs-h1: clamp(3.75rem, 0.366rem + 5.29vw, 5.125rem);
+    --fs-corpo: clamp(1.125rem, 0.509rem + 0.96vw, 1.375rem);
+    --fs-h3-card: clamp(1.375rem, 0.76rem + 0.96vw, 1.625rem);
+    --fs-preco: clamp(1.125rem, 0.509rem + 0.96vw, 1.375rem); /* 18/20/22 */
+  }
+}

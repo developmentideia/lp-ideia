@@ -49,7 +49,7 @@ O script só arredonda coordenadas, renomeia os ids de gradiente e tira espaços
 
 O `apple-touch-icon.png` (180 × 180) fica na raiz porque o iOS procura esse caminho mesmo sem `<link>`.
 
-As ilustrações (`hero`, `boy`, `girl`, `duo`, `3d`) ficam em WebP, em duas larguras cada: o tamanho exibido no desktop e o dobro. Para trocar, exporte do Figma a camada "Ilustração / ..." do frame de 1440 da página "LP IDeia · v09 · 5 breakpoints" em PNG 2x, salve numa pasta como `hero.png`, `boy.png` etc. e rode (precisa de Pillow). O boy é exceção: no 1440 a camada passa da borda da seção e o Figma exporta cortado, então exporte o componente "IDeia DS/Asset/Menino" da página "IDeia · Design System v1". O PNG certo do boy tem 1080 × 720.
+As ilustrações (`hero`, `boy`, `girl`, `duo`, `3d`) ficam em WebP, em duas larguras cada (o tamanho exibido no desktop e o dobro); a hero tem quatro, de 400 a 1600, porque também aparece no celular. Para trocar, exporte do Figma a camada "Ilustração / ..." do frame de 1440 da página "LP IDeia · v09 · 5 breakpoints" em PNG 2x, salve numa pasta como `hero.png`, `boy.png` etc. e rode (precisa de Pillow). O boy é exceção: no 1440 a camada passa da borda da seção e o Figma exporta cortado, então exporte o componente "IDeia DS/Asset/Menino" da página "IDeia · Design System v1". O PNG certo do boy tem 1080 × 720.
 
 ```sh
 python3 scripts/gerar-webp.py <pasta-com-os-png>

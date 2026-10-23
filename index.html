@@ -14,8 +14,8 @@
         <img src="assets/img/logo-ideia.svg" alt="IDeia" width="180" height="68">
       </a>
       <nav class="cabecalho__nav" aria-label="Principal">
-        <a class="cabecalho__link" href="#produtos">Produtos</a>
-        <a class="cabecalho__link" href="#como-funciona">Como funciona</a>
+        <a class="cabecalho__link" href="#produtos"><span class="so-desktop">Produtos</span><span class="ate-tablet">Soluções</span></a>
+        <a class="cabecalho__link cabecalho__link--como" href="#como-funciona">Como funciona</a>
         <a class="cabecalho__link" href="#contato">Contato</a>
         <a class="cta cta--cabecalho" href="https://wa.me/5582994059999">
           <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
@@ -26,32 +26,35 @@
 
     <main>
       <section class="abertura" id="inicio" aria-labelledby="abertura-titulo">
-        <picture>
-          <source media="(min-width: 1024px)" srcset="assets/img/hero-1368.webp 1368w, assets/img/hero-1600.webp 1600w" sizes="1282px">
-          <img class="abertura__ilustracao" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="1282" height="777" fetchpriority="high">
-        </picture>
         <div class="container abertura__conteudo">
-          <h1 class="abertura__titulo titulo-gradiente" id="abertura-titulo">
-            Sua ideia.<br>
-            Nosso <span class="destaque">código.</span><br>
-            Um novo <span class="destaque">futuro.</span>
-          </h1>
-          <p class="abertura__texto">A IDeia é uma software house que transforma necessidades de negócio em soluções digitais. Desenvolvemos software sob medida, dashboards, automações e integrações para simplificar processos e apoiar o crescimento da sua empresa.</p>
-          <a class="cta cta--principal" href="https://wa.me/5582994059999">
-            <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
-            <span>Fale conosco</span>
-          </a>
-          <div class="preco">
-            <p class="preco__valor">Produtos e soluções a partir de R$ 497</p>
-            <p class="preco__ressalva">Valor inicial para soluções de escopo essencial. Preço final conforme a solução e as personalizações necessárias.</p>
+          <div class="abertura__texto-bloco">
+            <h1 class="abertura__titulo titulo-gradiente" id="abertura-titulo">
+              Sua ideia.<br>
+              Nosso <span class="destaque">código.</span><br>
+              Um novo <span class="destaque">futuro.</span>
+            </h1>
+            <p class="abertura__texto">A IDeia é uma software house que transforma necessidades de negócio em soluções digitais. Desenvolvemos software sob medida, dashboards, automações e integrações para simplificar processos e apoiar o crescimento da sua empresa.</p>
+            <a class="cta cta--principal" href="https://wa.me/5582994059999">
+              <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
+              <span>Fale conosco</span>
+            </a>
+            <div class="preco">
+              <p class="preco__valor">Produtos e soluções a partir de R$ 497</p>
+              <p class="preco__ressalva">Valor inicial para soluções de escopo essencial. Preço final conforme a solução e as personalizações necessárias.</p>
+            </div>
           </div>
+          <picture class="abertura__ilustracao">
+            <source media="(min-width: 1024px)" srcset="assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w" sizes="56vw">
+            <source media="(min-width: 640px)" srcset="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            <img src="assets/img/hero-800.webp" srcset="assets/img/hero-400.webp 400w, assets/img/hero-800.webp 800w, assets/img/hero-1200.webp 1200w, assets/img/hero-1600.webp 1600w" sizes="calc(100vw - 48px)" alt="" width="800" height="493" fetchpriority="high">
+          </picture>
         </div>
       </section>
 
       <section class="sobre" aria-labelledby="sobre-titulo">
         <div class="container sobre__linha">
           <div class="sobre__personagem">
-            <img src="assets/img/boy-540.webp" srcset="assets/img/boy-540.webp 540w, assets/img/boy-1080.webp 1080w" sizes="540px" alt="" width="540" height="360" loading="lazy">
+            <img src="assets/img/boy-540.webp" srcset="assets/img/boy-540.webp 540w, assets/img/boy-1080.webp 1080w" sizes="(min-width: 1024px) 38vw, (min-width: 640px) 264px, calc(100vw - 48px)" alt="" width="540" height="360" loading="lazy">
           </div>
           <div class="sobre__proposta">
             <h2 class="titulo-gradiente titulo-secao" id="sobre-titulo">Tecnologia com<br><span class="destaque">propósito e parceria</span></h2>
@@ -81,7 +84,7 @@
           <article class="destaque-card" aria-labelledby="personalizaveis-titulo">
             <div class="destaque-card__encaixe">
               <picture>
-                <source media="(min-width: 1024px)" srcset="assets/img/3d-390.webp 390w, assets/img/3d-780.webp 780w" sizes="390px">
+                <source media="(min-width: 1024px)" srcset="assets/img/3d-390.webp 390w, assets/img/3d-780.webp 780w" sizes="28vw">
                 <img class="destaque-card__3d" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="390" height="300" loading="lazy">
               </picture>
             </div>
@@ -91,7 +94,9 @@
               <p class="texto-corpo destaque-card__descricao">Base adaptável à identidade e aos processos do seu negócio.</p>
               <p class="texto-auxiliar">Consulte a disponibilidade.</p>
             </div>
-            <img class="destaque-card__personagem" src="assets/img/girl-460.webp" srcset="assets/img/girl-460.webp 460w, assets/img/girl-920.webp 920w" sizes="460px" alt="" width="460" height="400" loading="lazy">
+            <div class="destaque-card__personagem">
+              <img src="assets/img/girl-460.webp" srcset="assets/img/girl-460.webp 460w, assets/img/girl-920.webp 920w" sizes="(min-width: 1024px) 32vw, (min-width: 640px) 374px, 258px" alt="" width="460" height="400" loading="lazy">
+            </div>
           </article>
 
           <ul class="ofertas">
@@ -149,19 +154,17 @@
               <p class="texto-corpo">Com tudo alinhado, nossa equipe desenvolve a solução conforme o que combinamos.</p>
             </li>
           </ol>
-          <img class="etapas__conexao etapas__conexao--1" src="assets/img/conexao-etapa.svg" alt="" width="320" height="24">
-          <img class="etapas__conexao etapas__conexao--2" src="assets/img/conexao-etapa.svg" alt="" width="320" height="24">
         </div>
       </section>
 
       <section class="contato" id="contato" aria-labelledby="contato-titulo">
         <div class="container contato__linha">
           <div class="contato__marca">
-            <img src="assets/img/duo-372.webp" srcset="assets/img/duo-372.webp 372w, assets/img/duo-744.webp 744w" sizes="372px" alt="" width="372" height="450" loading="lazy">
-            <img src="assets/img/logo-ideia.svg" alt="IDeia" width="269" height="101" loading="lazy">
+            <img class="contato__dupla" src="assets/img/duo-372.webp" srcset="assets/img/duo-372.webp 372w, assets/img/duo-744.webp 744w" sizes="(min-width: 1024px) 29vw, (min-width: 640px) 394px, 191px" alt="" width="372" height="450" loading="lazy">
+            <img class="contato__logo" src="assets/img/logo-ideia.svg" alt="IDeia" width="269" height="101" loading="lazy">
           </div>
           <div class="contato__convite">
-            <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="contato-titulo">Vamos transformar<br>sua ideia em uma<br><span class="destaque">solução digital?</span></h2>
+            <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="contato-titulo">Vamos transformar<br class="quebra-fora-tablet"> sua ideia em uma<br><span class="destaque">solução digital?</span></h2>
             <a class="cta cta--final" href="https://wa.me/5582994059999">
               <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
               <span class="cta__rotulo">

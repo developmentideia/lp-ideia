@@ -1,7 +1,12 @@
 /*
- * Estilos das seções da LP IDeia (H1, IFI-22). Só usa as variáveis de tokens.css.
- * Medidas conferidas no frame v09 1440 (Figma 61:402). A adaptação às outras
- * larguras é da H2 (IFI-23); aqui o alvo é o desktop.
+ * Estilos das seções da LP IDeia. Só usa as variáveis de tokens.css.
+ *
+ * Escrito a partir do celular (frame v09 390, 61:1046) e ampliado em dois pontos:
+ *   640 px  tablet  (frame 768, 61:891)
+ *   1024 px desktop (frames 1024, 1280 e 1440: 61:732, 61:567 e 61:402)
+ * No desktop as medidas são proporcionais à largura, então 1024, 1280 e 1440
+ * saem da mesma regra. As larguras do Figma são referência de composição, não
+ * pontos de quebra obrigatórios (H2, IFI-23).
  */
 
 /* Base */
@@ -12,6 +17,11 @@
   box-sizing: border-box;
 }
 
+:root {
+  --gutter: 24px;
+  --secao-py: 40px;
+}
+
 html {
   -webkit-text-size-adjust: 100%;
   scroll-behavior: smooth;
@@ -20,7 +30,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: var(--color-bg) url("../img/fundo-desktop.webp") top center / 100% auto no-repeat;
+  background: var(--color-bg) url("../img/fundo-390.webp") top center / 100% 100% no-repeat;
   color: var(--color-ink);
   font-family: var(--font-sans);
   font-weight: var(--fw-regular);
@@ -45,6 +55,7 @@ ol {
 img {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 a {
@@ -52,7 +63,7 @@ a {
 }
 
 .container {
-  width: min(1280px, 100% - 2 * var(--space-80));
+  width: min(1280px, 100% - 2 * var(--gutter));
   margin-inline: auto;
 }
 
@@ -102,6 +113,10 @@ a {
   line-height: var(--lh-rotulo);
 }
 
+.so-desktop {
+  display: none;
+}
+
 /* CTA de WhatsApp: componente "IDeia DS/Button" */
 
 .cta {
@@ -141,19 +156,21 @@ a {
 }
 
 .cta--cabecalho {
+  display: none;
   width: 230px;
   height: var(--cta-height-header);
   font-size: var(--fs-cta-header);
 }
 
 .cta--principal {
-  width: 360px;
+  width: 100%;
   height: var(--cta-height-principal);
   font-size: var(--fs-cta-principal);
 }
 
 .cta--final {
-  width: 430px;
+  width: 100%;
+  max-width: 430px;
   height: var(--cta-height-final);
   font-size: var(--fs-cta-final);
 }
@@ -162,7 +179,6 @@ a {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  width: 340px;
 }
 
 .cta__numero {
@@ -177,24 +193,25 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-block: var(--space-24);
+  gap: var(--space-16);
+  padding-block: var(--space-16);
 }
 
 .cabecalho__marca img {
-  width: 180px;
-  height: auto;
+  width: 110px;
 }
 
 .cabecalho__nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-24);
-  width: 670px;
+  gap: var(--space-8);
 }
 
 .cabecalho__link {
-  padding-block: 14px;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  padding-inline: var(--space-8);
   font-size: var(--fs-auxiliar);
   line-height: var(--lh-auxiliar);
   text-decoration: none;
@@ -209,63 +226,51 @@ a {
   outline-offset: 2px;
 }
 
+.cabecalho__link--como {
+  display: none;
+}
+
 /* 01 Abertura */
 
 .abertura {
   position: relative;
-  height: 777px;
-  padding-block: var(--space-64);
-  overflow: hidden;
-}
-
-.abertura__ilustracao {
-  position: absolute;
-  top: 0;
-  left: calc(50% - 562px);
-  width: 1282px;
-  max-width: none;
-  height: 777px;
-  object-fit: cover;
-}
-
-.abertura::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: calc(50% + 72px);
-  height: 917px;
-  background: var(--gradient-hero-fade);
+  padding-block: var(--space-32);
 }
 
 .abertura__conteudo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-32);
+}
+
+.abertura__texto-bloco {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-28);
+  gap: var(--space-24);
 }
 
 .abertura__titulo {
-  max-width: 706px;
   font-size: var(--fs-h1);
   font-weight: var(--fw-extrabold);
   line-height: var(--lh-h1);
 }
 
 .abertura__texto {
-  max-width: 626px;
   font-size: var(--fs-corpo);
   line-height: var(--lh-corpo);
+}
+
+.abertura__ilustracao img {
+  width: 100%;
 }
 
 .preco {
   display: flex;
   flex-direction: column;
   gap: var(--space-8);
-  max-width: 626px;
 }
 
 .preco__valor {
@@ -283,107 +288,89 @@ a {
 /* 02 Sobre e diferenciais */
 
 .sobre {
-  padding-top: 90px;
-  padding-bottom: var(--space-24);
+  padding-block: var(--secao-py);
   overflow: hidden;
 }
 
 .sobre__linha {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-24);
-  height: 364px;
+  gap: var(--space-32);
 }
 
 .sobre__personagem {
-  position: relative;
-  flex: none;
-  width: 294px;
-  height: 364px;
+  width: 100%;
 }
 
 .sobre__personagem img {
-  position: absolute;
-  top: 3px;
-  left: -170px;
-  width: 540px;
-  max-width: none;
-  height: 360px;
+  width: 100%;
 }
 
 .sobre__proposta {
   display: flex;
-  flex: none;
   flex-direction: column;
   gap: var(--space-16);
-  width: 512px;
+  order: -1;
+  text-align: center;
 }
 
 .diferenciais {
-  display: flex;
-  flex: none;
-  align-items: center;
-  gap: var(--space-16);
-  width: 426px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-12);
+  width: 100%;
 }
 
 .diferencial {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   gap: var(--space-16);
-  font-size: 1.25rem; /* 20 px, line-height 28 px no v09 */
-  line-height: 1.75rem;
+  font-size: 1rem;
+  line-height: 1.4375rem;
   text-align: center;
+}
+
+.diferencial img {
+  width: 64px;
 }
 
 /* 03 Produtos e serviços */
 
 .produtos {
-  padding-block: var(--space-64);
+  padding-block: var(--secao-py);
 }
 
 .produtos__conteudo {
   display: flex;
   flex-direction: column;
-  gap: var(--space-48);
+  gap: var(--space-32);
 }
 
+/* Borda em gradiente: fundo na área interna e gradiente só na borda */
 .destaque-card {
   position: relative;
   display: flex;
-  align-items: center;
-  gap: var(--space-24);
-  padding: var(--space-20) 426px var(--space-20) var(--space-32);
-  border: 1.5px solid var(--color-mint);
+  flex-direction: column;
+  gap: var(--space-12);
+  padding: var(--space-24) var(--space-24) 0;
+  border: 1.5px solid transparent;
   border-radius: var(--radius-32);
-  background: var(--gradient-section);
+  background:
+    var(--gradient-section) padding-box,
+    var(--gradient-titulo) border-box;
   box-shadow: var(--shadow-glow-blue);
 }
 
 .destaque-card__encaixe {
-  position: relative;
-  flex: none;
-  width: 339px;
-  height: 300px;
-}
-
-.destaque-card__3d {
-  position: absolute;
-  top: 0;
-  left: -25.5px;
-  width: 390px;
-  max-width: none;
-  height: 300px;
+  display: none;
 }
 
 .destaque-card__texto {
   display: flex;
-  flex: none;
   flex-direction: column;
-  gap: var(--space-20);
-  width: 502px;
+  gap: var(--space-16);
 }
 
 .destaque-card__titulo {
@@ -392,22 +379,33 @@ a {
   line-height: var(--lh-h3-destaque);
 }
 
-.destaque-card__descricao {
-  max-width: 430px;
+.destaque-card__personagem {
+  position: relative;
+  align-self: flex-end;
+  width: 258px;
+  max-width: 100%;
 }
 
-.destaque-card__personagem {
+/* "Luz de apoio / personagem" do 390: elipse azul desfocada atrás da menina */
+.destaque-card__personagem::before {
+  content: "";
   position: absolute;
-  top: -50px;
-  left: 829px;
-  width: 460px;
-  max-width: none;
-  height: 400px;
+  right: 16px;
+  bottom: 18px;
+  width: 180px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgb(18 89 255 / 15%);
+  filter: blur(32px);
+}
+
+.destaque-card__personagem img {
+  position: relative;
+  width: 100%;
 }
 
 .ofertas {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-20);
 }
 
@@ -415,7 +413,6 @@ a {
   display: flex;
   align-items: flex-start;
   gap: var(--space-16);
-  min-height: 196px;
   padding: var(--space-24);
   border: 1px solid var(--color-line);
   border-radius: var(--radius-24);
@@ -425,8 +422,7 @@ a {
 
 .oferta > img {
   flex: none;
-  width: 80px;
-  height: 80px;
+  width: 64px;
 }
 
 .oferta__conteudo {
@@ -444,23 +440,23 @@ a {
 /* 04 Como funciona */
 
 .como-funciona {
-  padding-block: var(--space-64);
+  padding-block: var(--secao-py);
 }
 
 .como-funciona__conteudo {
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: var(--space-64);
-}
-
-.etapas {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-40);
 }
 
+.etapas {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
 .etapa {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -468,23 +464,32 @@ a {
   text-align: center;
 }
 
+/* Seta para baixo entre as etapas empilhadas (celular e tablet) */
+.etapa:not(:last-child)::after {
+  content: "";
+  width: 24px;
+  height: 40px;
+  background: url("../img/seta-etapa.svg") center / contain no-repeat;
+}
+
 .etapa__icone {
   position: relative;
-  width: 96px;
-  height: 96px;
+  width: 76px;
+  height: 76px;
 }
 
-.etapa__orbita {
+.etapa__icone img {
+  position: relative;
+  width: 100%;
+}
+
+/* A órbita do Figma tem 128 x 112 para um ícone de 96: mantém a proporção */
+.etapa__icone .etapa__orbita {
   position: absolute;
   top: 0;
-  left: -16px;
-  width: 128px;
+  left: -16.667%;
+  width: 133.333%;
   max-width: none;
-  height: 112px;
-}
-
-.etapa__icone img:not(.etapa__orbita) {
-  position: relative;
 }
 
 .etapa__titulo {
@@ -493,78 +498,503 @@ a {
   line-height: var(--lh-h3-card);
 }
 
-.etapas__conexao {
-  position: absolute;
-  top: calc(var(--lh-h2) * var(--fs-h2) + var(--space-64) + 36px);
-  width: 320px;
-  height: 24px;
-}
-
-.etapas__conexao--1 {
-  left: 260px;
-}
-
-.etapas__conexao--2 {
-  left: 700px;
-}
-
 /* 05 Contato */
 
 .contato {
-  padding-block: var(--space-64);
+  padding-block: var(--secao-py);
 }
 
 .contato__linha {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--space-48);
+  gap: var(--space-32);
 }
 
 .contato__marca {
   display: flex;
-  flex: none;
   align-items: center;
-  gap: var(--space-24);
-  width: 665px;
+  justify-content: center;
+  gap: 3.5%;
+  width: min(100%, 342px);
 }
 
-.contato__marca img:first-child {
-  width: 372px;
-  height: 450px;
+.contato__dupla {
+  width: 55.8%; /* 191 de 342 px no 390 */
 }
 
-.contato__marca img:last-child {
-  width: 269px;
-  height: auto;
+.contato__logo {
+  width: 40.6%; /* 139 de 342 px no 390 */
 }
 
 .contato__convite {
   display: flex;
-  flex: none;
   flex-direction: column;
   align-items: center;
   gap: var(--space-32);
-  width: 567px;
+  width: 100%;
 }
 
 /* 06 Rodapé */
 
 .rodape {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: var(--space-20);
-  padding-block: var(--space-32);
+  padding-block: var(--space-24);
 }
 
 .rodape img {
-  width: 140px;
-  height: auto;
+  width: 112px;
 }
 
 .rodape__assinatura {
-  flex: 1;
   color: var(--color-muted);
   font-size: var(--fs-auxiliar);
   line-height: var(--lh-auxiliar);
-  text-align: right;
+  text-align: center;
+}
+
+/* Celular estreito (320 a 379 px): os três diferenciais cabem lado a lado */
+
+@media (max-width: 379px) {
+  .diferenciais {
+    gap: var(--space-8);
+  }
+
+  .diferencial {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+  }
+}
+
+/* Tablet: a partir de 640 px (frame 768) */
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: 32px;
+    --secao-py: 48px;
+  }
+
+  body {
+    background-image: url("../img/fundo-768.webp");
+  }
+
+  .cabecalho {
+    padding-block: var(--space-24);
+  }
+
+  .cabecalho__marca img {
+    width: 146px;
+  }
+
+  .cabecalho__nav {
+    gap: var(--space-24);
+  }
+
+  .cabecalho__link--como {
+    display: inline-flex;
+  }
+
+  .abertura {
+    padding-block: var(--space-64);
+  }
+
+  .abertura__texto-bloco {
+    gap: var(--space-28);
+  }
+
+  .abertura__ilustracao {
+    display: none;
+  }
+
+  .cta--principal {
+    width: 320px;
+    height: 64px;
+  }
+
+  .sobre__linha {
+    flex-flow: row wrap;
+    gap: var(--space-32) var(--space-24);
+  }
+
+  .sobre__personagem {
+    flex: none;
+    width: 264px;
+    height: 250px;
+  }
+
+  .sobre__personagem img {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sobre__proposta {
+    flex: 1;
+    order: 0;
+    text-align: left;
+  }
+
+  .diferenciais {
+    gap: var(--space-16);
+  }
+
+  .diferencial img {
+    width: 80px;
+  }
+
+  .produtos__conteudo {
+    gap: var(--space-40);
+  }
+
+  .destaque-card {
+    flex-direction: row;
+    align-items: center;
+    min-height: 279px;
+    padding: var(--space-32);
+  }
+
+  .destaque-card__texto {
+    gap: var(--space-20);
+    width: 51%;
+  }
+
+  .destaque-card__personagem {
+    position: absolute;
+    top: -40px;
+    right: -12px;
+    width: 53%;
+    max-width: 374px;
+  }
+
+  .destaque-card__personagem::before {
+    display: none;
+  }
+
+  .ofertas {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .oferta {
+    flex-direction: column;
+    padding: var(--space-20);
+  }
+
+  .como-funciona__conteudo {
+    gap: var(--space-64);
+  }
+
+  .etapa__icone {
+    width: 96px;
+    height: 96px;
+  }
+
+  .contato__linha {
+    gap: var(--space-48);
+  }
+
+  .contato__marca {
+    gap: var(--space-24);
+    width: auto;
+  }
+
+  /* O PNG da dupla tem margem transparente em cima e embaixo (caixa 372 x 450):
+     363 px de altura deixam a dupla com os 300 px do frame 768 */
+  .contato__dupla {
+    width: auto;
+    height: 363px;
+  }
+
+  .quebra-fora-tablet {
+    display: none;
+  }
+
+  .contato__logo {
+    width: 286px;
+  }
+
+  .rodape {
+    flex-direction: row;
+    padding-block: var(--space-32);
+  }
+
+  .rodape img {
+    width: 140px;
+  }
+
+  .rodape__assinatura {
+    flex: 1;
+    text-align: right;
+  }
+}
+
+/* Desktop: a partir de 1024 px (frames 1024, 1280 e 1440) */
+
+@media (min-width: 1024px) {
+  :root {
+    --gutter: 48px;
+    --secao-py: clamp(48px, 4.44vw, 64px);
+  }
+
+  body {
+    background: var(--color-bg) url("../img/fundo-desktop.webp") top center / cover no-repeat;
+  }
+
+  .so-desktop {
+    display: inline;
+  }
+
+  .ate-tablet {
+    display: none;
+  }
+
+  .cabecalho__nav {
+    gap: var(--space-40);
+  }
+
+  /* Abertura: texto à esquerda, personagens no canto inferior direito */
+  .abertura {
+    min-height: min(360px + 37.5vw, 900px); /* 744, 840 e 900 px em 1024, 1280 e 1440 */
+  }
+
+  .abertura__texto-bloco {
+    width: 55%;
+  }
+
+  .abertura__texto,
+  .preco {
+    max-width: min(500px, 35vw);
+  }
+
+  .abertura__ilustracao {
+    position: absolute;
+    top: min(19.5vw + 70px, 350px);
+    right: max(2vw, (100vw - 1440px) / 2 + 30px);
+    display: block;
+    width: min(56vw, 800px);
+  }
+
+  .cta--principal {
+    width: 320px;
+    height: 64px;
+  }
+
+  /* Sobre: menino, proposta e diferenciais na mesma linha, proporcionais */
+  .sobre {
+    padding-top: clamp(64px, 6.25vw, 90px);
+    padding-bottom: var(--space-24);
+  }
+
+  .sobre__linha {
+    flex-wrap: nowrap;
+    gap: 1.875%;
+  }
+
+  .sobre__personagem {
+    position: relative;
+    width: 23%;
+    height: auto;
+    aspect-ratio: 294 / 364;
+  }
+
+  .sobre__personagem img {
+    position: absolute;
+    top: 0.8%;
+    left: -57.8%;
+    width: 183.7%;
+    max-width: none;
+    height: auto;
+    object-fit: initial;
+  }
+
+  .sobre__proposta {
+    flex: none;
+    width: 40%;
+  }
+
+  /*
+   * No Figma a faixa "Sobre" e o card de destaque diminuem proporcionalmente
+   * à largura entre 1440 e 1024 (fator 1 a 0,71); as fontes acompanham em vw,
+   * com o tamanho do 1440 como teto.
+   */
+  .sobre .titulo-secao {
+    font-size: min(3.33vw, 3rem);
+  }
+
+  .sobre .texto-corpo {
+    font-size: min(1.53vw, 1.375rem);
+  }
+
+  .diferenciais {
+    flex: none;
+    gap: 3.75%;
+    width: 33.3%;
+  }
+
+  .diferencial {
+    font-size: clamp(1rem, 0.96vw + 0.385rem, 1.25rem);
+    line-height: 1.4;
+  }
+
+  .diferencial img {
+    width: min(96px, 73%);
+  }
+
+  /* Produtos: destaque com ilustração 3D, menina sobre a borda e cards em linha */
+  /*
+   * Larguras em % da área interna do card (1280 - 32 - 426 = 822 px no 1440):
+   * encaixe 339, texto 502 e espaço 24 px.
+   */
+  .destaque-card {
+    gap: 2.9%;
+    min-height: 0;
+    padding: var(--space-20) 33.3% var(--space-20) 2.5%;
+  }
+
+  .destaque-card__encaixe {
+    position: relative;
+    display: block;
+    flex: none;
+    width: 41.2%;
+    aspect-ratio: 339 / 300;
+  }
+
+  .destaque-card__3d {
+    position: absolute;
+    top: 0;
+    left: -7.5%;
+    width: 115%;
+    max-width: none;
+  }
+
+  .destaque-card__texto {
+    flex: none;
+    width: 61%;
+  }
+
+  .destaque-card__descricao {
+    max-width: 430px;
+  }
+
+  .destaque-card .rotulo {
+    font-size: min(0.9vw, 0.8125rem);
+    line-height: 1.54;
+  }
+
+  .destaque-card__titulo {
+    font-size: min(2.64vw, 2.375rem);
+  }
+
+  .destaque-card .texto-corpo {
+    font-size: min(1.53vw, 1.375rem);
+  }
+
+  .destaque-card .texto-auxiliar {
+    font-size: min(1.11vw, 1rem);
+  }
+
+  .destaque-card__personagem {
+    top: -3.45vw;
+    right: auto;
+    left: 64.9%;
+    width: 35.9%;
+    max-width: none;
+  }
+
+  .oferta {
+    flex-direction: row;
+  }
+
+  /* Como funciona: três colunas ligadas por setas */
+  .etapas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-40);
+  }
+
+  .etapa:not(:last-child)::after {
+    position: absolute;
+    top: 36px;
+    left: calc(50% + 60px);
+    width: calc(100% + var(--space-40) - 120px);
+    height: 24px;
+    background: url("../img/conexao-etapa.svg") center / 100% 100% no-repeat;
+  }
+
+  /* Contato: marca à esquerda, convite à direita */
+  .contato__linha {
+    flex-direction: row;
+  }
+
+  .contato__marca {
+    flex: none;
+    width: 52%;
+  }
+
+  .contato__dupla {
+    width: 55.8%;
+    height: auto;
+  }
+
+  .quebra-fora-tablet {
+    display: inline;
+  }
+
+  .contato__logo {
+    width: 40.4%;
+  }
+
+  .contato__convite {
+    flex: none;
+    width: 44.3%;
+  }
+}
+
+/* Desktop largo: a partir de 1200 px (frames 1280 e 1440) */
+
+@media (min-width: 1200px) {
+  :root {
+    --gutter: 64px;
+  }
+
+  .cabecalho__marca img {
+    width: 180px;
+  }
+
+  .cabecalho__nav {
+    gap: var(--space-24);
+  }
+
+  .cabecalho__link {
+    padding-inline: var(--space-16);
+  }
+
+  .cta--cabecalho {
+    display: inline-flex;
+    margin-left: var(--space-24);
+  }
+
+  .cta--principal {
+    width: 360px;
+    height: var(--cta-height-principal);
+  }
+
+  .destaque-card {
+    padding-block: var(--space-20);
+  }
+
+  .oferta {
+    padding: var(--space-24);
+  }
+
+  .oferta > img {
+    width: 80px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --gutter: 80px;
+  }
 }
