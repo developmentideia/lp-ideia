@@ -49,6 +49,14 @@ O script só arredonda coordenadas, renomeia os ids de gradiente e tira espaços
 
 O `apple-touch-icon.png` (180 × 180) fica na raiz porque o iOS procura esse caminho mesmo sem `<link>`.
 
+As ilustrações (`hero`, `boy`, `girl`, `duo`, `3d`) ficam em WebP, em duas larguras cada: o tamanho exibido no desktop e o dobro. Para trocar, exporte do Figma a camada "Ilustração / ..." do frame de 1440 da página "LP IDeia · v09 · 5 breakpoints" em PNG 2x, salve numa pasta como `hero.png`, `boy.png` etc. e rode (precisa de Pillow):
+
+```sh
+python3 scripts/gerar-webp.py <pasta-com-os-png>
+```
+
+A imagem de compartilhamento `assets/img/og-ideia.jpg` (1200 × 630) é um print de `scripts/og/og.html`, que junta a hero e o logo. Se a hero ou o logo mudarem, abra essa página no servidor local com a janela em 1200 × 630, tire o print e salve como JPG.
+
 ## Fonte
 
 `assets/fonts/manrope-latin.woff2` é a Manrope variável do Google Fonts, limitada aos pesos 400 a 800 e ao subconjunto latino (cobre português, aspas, travessões e €). O `@font-face` está no início de `assets/css/tokens.css`. Para gerar de novo a partir do `Manrope-VariableFont_wght.ttf` do Google Fonts, com `fonttools` e `brotli` instalados:

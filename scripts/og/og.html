@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8">
+    <title>Imagem de compartilhamento (1200 × 630)</title>
+    <!--
+      Fonte da assets/img/og-ideia.jpg. Abra esta página num servidor local
+      (python3 -m http.server 8080 na raiz), ajuste a janela para 1200 × 630
+      e tire um print, ou use o comando do README.
+    -->
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+        background: #001238;
+      }
+
+      .fundo {
+        position: absolute;
+        inset: 0;
+        background: url("../../assets/img/hero-1600.webp") right 0 top 15% / 1260px auto no-repeat;
+      }
+
+      .logo {
+        position: absolute;
+        left: 72px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 400px;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="fundo"></div>
+    <img class="logo" src="../../assets/img/logo-ideia.svg" alt="IDeia" width="154" height="58">
+  </body>
+</html>
