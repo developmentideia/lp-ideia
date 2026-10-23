@@ -1,0 +1,17 @@
+{
+  "name": "lp-ideia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page institucional da IDeia. Página estática, sem etapa de build.",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "validate": "html-validate \"**/*.html\"",
+    "serve": "python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "html-validate": "11.16.2"
+  }
+}
