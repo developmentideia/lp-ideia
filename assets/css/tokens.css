@@ -1,0 +1,140 @@
+/*
+ * Tokens do design system da LP IDeia (T5, IFI-21).
+ *
+ * Origem: arquivo Figma 8cGrLRtEjwK6Q3KkjamzSC, coleções "IDeia v08 / Primitivos"
+ * e "IDeia v08 / Interface", componente "IDeia DS/Button" (DS 44:902), estilos de
+ * texto "IDeia v08/<largura>/..." e valores usados no frame v09 1440 (61:402).
+ * Lidos em 23/10/2026. Os nomes seguem os tokens do Figma ("color/bg" vira --color-bg).
+ *
+ * A coleção antiga "IDeia / Primitivos" (palette/*) não aparece nos frames v09 e
+ * não foi trazida.
+ *
+ * Regra: o CSS das seções usa só estas variáveis; nenhum valor de cor solto.
+ * Sem tema claro na v1.
+ */
+
+:root {
+  /* Cores: IDeia v08 / Interface (alias de IDeia v08 / Primitivos) */
+  --color-bg: #001238;
+  --color-deep: #00102c;
+  --color-surface: #061d4d;
+  --color-ink: #f5f8ff;
+  --color-muted: #c7d6ee;
+  --color-cyan: #14ddf3;
+  --color-blue: #1774ff;
+  --color-violet: #8656ff;
+  --color-emerald: #087f5b;
+  --color-emerald-hover: #076849;
+  --color-line: #1765bc;
+  --color-lime: #91f4a7;
+
+  /* Cores usadas no v09 sem variável no Figma (frame 61:402) */
+  --color-white: #ffffff; /* ícones e bordas de 1,575 px */
+  --color-line-bright: #147ef2; /* borda de 1,2 px dos cards */
+
+  /*
+   * Gradientes usados no v09 sem variável no Figma (frame 61:402). Cores e
+   * paradas conferidas; o ângulo de cada uso é ajustado na H1 contra o frame.
+   */
+  --gradient-brand: linear-gradient(90deg, #0038ff 0%, #00caff 48%, #00eab4 80%, #bcff39 100%);
+  --gradient-section: linear-gradient(180deg, #031e51 0%, #00123a 100%);
+  --gradient-card: linear-gradient(180deg, #052252 0%, #00163c 100%);
+  --gradient-hero-fade: linear-gradient(
+    180deg,
+    rgb(0 18 56 / 100%) 0%,
+    rgb(0 18 56 / 96%) 80%,
+    rgb(0 18 56 / 0%) 100%
+  );
+
+  /* Sombras: estilo "IDeia DS/Elevação/Glow azul" e brilho dos cards no v09 */
+  --shadow-glow-blue: 0 0 20px rgb(18 106 255 / 13%);
+  --shadow-glow-card: 0 0 16px rgb(20 165 255 / 30%);
+
+  /* Espaçamentos: IDeia v08 / Interface, space/* */
+  --space-8: 0.5rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-20: 1.25rem;
+  --space-24: 1.5rem;
+  --space-28: 1.75rem;
+  --space-32: 2rem;
+  --space-40: 2.5rem;
+  --space-48: 3rem;
+  --space-56: 3.5rem;
+  --space-64: 4rem;
+  --space-80: 5rem;
+  --space-96: 6rem;
+
+  /* Raios: IDeia v08 / Interface, radius/* */
+  --radius-12: 0.75rem;
+  --radius-20: 1.25rem;
+  --radius-24: 1.5rem;
+  --radius-32: 2rem;
+
+  /* Tipografia */
+  --font-sans: "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+
+  /*
+   * Escala fluida: interpolação linear entre os estilos "IDeia v08/390/*" e
+   * "IDeia v08/1440/*". Nas larguras intermediárias do Figma (768, 1024, 1280)
+   * a diferença fica em poucos pixels; o ajuste fino é da H2 (IFI-23).
+   */
+  --fs-h1: clamp(2.375rem, 1.354rem + 4.19vw, 5.125rem); /* 38 a 82 px */
+  --fs-h2: clamp(1.875rem, 1.457rem + 1.714vw, 3rem); /* 30 a 48 px */
+  --fs-h3-destaque: clamp(1.688rem, 1.432rem + 1.048vw, 2.375rem); /* 27 a 38 px */
+  --fs-h3-card: clamp(1.25rem, 1.111rem + 0.5714vw, 1.625rem); /* 20 a 26 px */
+  --fs-corpo: clamp(1rem, 0.8607rem + 0.5714vw, 1.375rem); /* 16 a 22 px */
+  --fs-auxiliar: clamp(0.8125rem, 0.7429rem + 0.2857vw, 1rem); /* 13 a 16 px */
+  --fs-rotulo: clamp(0.6875rem, 0.6411rem + 0.1905vw, 0.8125rem); /* 11 a 13 px */
+  --fs-preco: clamp(1.25rem, 1.204rem + 0.1905vw, 1.375rem); /* 20 a 22 px */
+
+  --lh-h1: 1.12;
+  --lh-h2: 1.18;
+  --lh-h3-destaque: 1.21;
+  --lh-h3-card: 1.3;
+  --lh-corpo: 1.5;
+  --lh-auxiliar: 1.45;
+  --lh-rotulo: 1.25rem; /* 20 px em todas as larguras */
+  --lh-preco: 1.4;
+
+  /* CTA: componente "IDeia DS/Button" */
+  --cta-radius: var(--radius-20);
+  --cta-padding-inline: var(--space-20);
+  --cta-gap: 0.875rem; /* 14 px */
+  --cta-icon-width: 1.375rem; /* 22 x 20 px */
+  --cta-icon-height: 1.25rem;
+  --cta-height-header: 3.25rem; /* 52 px */
+  --cta-height-principal: 4.5rem; /* 72 px */
+  --cta-height-final: 5.5rem; /* 88 px */
+  --fs-cta-header: 1.0625rem; /* 17 px, line-height 22 px */
+  --fs-cta-principal: clamp(1.125rem, 0.9857rem + 0.5714vw, 1.5rem); /* 18 a 24 px */
+  --fs-cta-final: clamp(1.125rem, 1.009rem + 0.4762vw, 1.438rem); /* 18 a 23 px */
+  --fs-cta-numero: clamp(0.75rem, 0.7036rem + 0.1905vw, 0.875rem); /* 12 a 14 px, Medium */
+  --lh-cta: 1.3;
+
+  /*
+   * Estados do CTA. Contraste do texto (--color-ink) medido em 23/10/2026,
+   * igual ao QA do D-03: Default e Focus 4,71:1; Hover 6,40:1; Pressed 17,79:1.
+   * Disabled existe no DS, mas não é usado na LP (CA-12).
+   */
+  --cta-text: var(--color-ink);
+  --cta-bg-default: var(--color-emerald);
+  --cta-bg-hover: var(--color-emerald-hover);
+  --cta-bg-pressed: var(--color-deep);
+  --cta-bg-focus: var(--color-emerald);
+
+  /*
+   * Foco: contorno ciano de 3 px do DS. Ciano sobre o verde do CTA dá 3,02:1,
+   * acima do mínimo de 3:1 para indicadores de foco (WCAG 2.2, 1.4.11).
+   */
+  --focus-color: var(--color-cyan);
+  --focus-width: 3px;
+  --focus-ring: var(--focus-width) solid var(--focus-color);
+
+  /* Alvo mínimo de toque (CA-13) */
+  --target-min: 2.75rem; /* 44 px */
+}
