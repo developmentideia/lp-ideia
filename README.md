@@ -14,7 +14,7 @@ assets/css/       estilos (tokens do design system em :root)
 assets/js/        só se for necessário
 assets/img/       WebP e SVG exportados do Figma
 assets/fonts/     Manrope variável em WOFF2, subconjunto latino
-_headers          cabeçalhos de segurança e cache (Cloudflare Pages)
+vercel.json       cabeçalhos de segurança e cache (T6)
 ```
 
 ## Rodar localmente
@@ -82,15 +82,17 @@ lychee --offline --include-fragments --exclude-path node_modules './**/*.html'
 
 ## Publicar
 
-A publicação é automática pela Cloudflare Pages:
+A publicação é automática pela Vercel (projeto `lp-ideia`, time `id-eia`, plano pago), ligada a este repositório. Não há etapa de build: a Vercel serve os arquivos como estão.
 
 1. Crie uma branch por ticket, por exemplo `ifi-22-estrutura`.
-2. Abra um pull request para a `main`. A Cloudflare gera um endereço de preview para o PR, onde se faz o QA.
-3. Com os checks verdes e o checklist de revisão marcado no PR, faça o merge. A `main` publica em produção.
+2. Abra um pull request para a `main`. A Vercel publica um preview só daquele PR e comenta o endereço no próprio PR (formato `lp-ideia-git-<branch>-id-eia.vercel.app`). O QA é feito ali.
+3. Com os checks verdes, faça o merge. A `main` publica em produção.
 
-Endereço de produção e detalhes do preview: a registrar na T2 (IFI-18).
+Produção, até o domínio próprio entrar (T10): https://lp-ideia.vercel.app
+
+Os endereços `*.vercel.app` estão protegidos pelo login da Vercel ("Vercel Authentication"), então só quem é do time consegue abrir. O domínio `ideia.tec.br`, quando for ligado, fica público.
 
 ## Reverter
 
-- **Mais rápido:** no painel da Cloudflare Pages, abra o projeto, vá em Deployments e escolha "Rollback" na publicação anterior.
+- **Mais rápido:** no painel da Vercel, abra o projeto `lp-ideia`, vá em Deployments, escolha a publicação anterior e use "Promote to Production" (ou "Instant Rollback").
 - **Pelo Git:** reverta o commit ou o merge do PR na `main` (`git revert`), o que publica de novo a versão anterior.
