@@ -5,7 +5,9 @@ Uso (precisa de Pillow: pip install pillow):
 
 Exporte do Figma, na página "LP IDeia · v09 · 5 breakpoints", frame de 1440,
 cada camada "Ilustração / ..." em PNG 2x, com o nome do arquivo igual à chave
-de LARGURAS (hero.png, boy.png, girl.png, duo.png, 3d.png).
+de LARGURAS (hero.png, boy.png, girl.png, duo.png, 3d.png). Exceção: o boy
+sai cortado do frame 1440; exporte o componente "IDeia DS/Asset/Menino" da
+página "IDeia · Design System v1" (PNG de 1080 x 720).
 
 Cada imagem sai em duas larguras (1x e 2x do tamanho exibido no desktop),
 WebP qualidade 80, mantendo a transparência. A hero não tem transparência.
