@@ -3,13 +3,180 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>IDeia</title>
+    <title>IDeia | Software sob medida, dados e automações</title>
+    <link rel="preload" href="assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="assets/css/tokens.css">
+    <link rel="stylesheet" href="assets/css/estilos.css">
   </head>
   <body>
+    <header class="cabecalho container">
+      <a class="cabecalho__marca" href="#inicio">
+        <img src="assets/img/logo-ideia.svg" alt="IDeia" width="180" height="68">
+      </a>
+      <nav class="cabecalho__nav" aria-label="Principal">
+        <a class="cabecalho__link" href="#produtos">Produtos</a>
+        <a class="cabecalho__link" href="#como-funciona">Como funciona</a>
+        <a class="cabecalho__link" href="#contato">Contato</a>
+        <a class="cta cta--cabecalho" href="https://wa.me/5582994059999">
+          <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
+          <span>Fale conosco</span>
+        </a>
+      </nav>
+    </header>
+
     <main>
-      <h1>IDeia</h1>
-      <p>Página em construção.</p>
+      <section class="abertura" id="inicio" aria-labelledby="abertura-titulo">
+        <picture>
+          <source media="(min-width: 1024px)" srcset="assets/img/hero-1368.webp 1368w, assets/img/hero-1600.webp 1600w" sizes="1282px">
+          <img class="abertura__ilustracao" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="1282" height="777" fetchpriority="high">
+        </picture>
+        <div class="container abertura__conteudo">
+          <h1 class="abertura__titulo titulo-gradiente" id="abertura-titulo">
+            Sua ideia.<br>
+            Nosso <span class="destaque">código.</span><br>
+            Um novo <span class="destaque">futuro.</span>
+          </h1>
+          <p class="abertura__texto">A IDeia é uma software house que transforma necessidades de negócio em soluções digitais. Desenvolvemos software sob medida, dashboards, automações e integrações para simplificar processos e apoiar o crescimento da sua empresa.</p>
+          <a class="cta cta--principal" href="https://wa.me/5582994059999">
+            <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
+            <span>Fale conosco</span>
+          </a>
+          <div class="preco">
+            <p class="preco__valor">Produtos e soluções a partir de R$ 497</p>
+            <p class="preco__ressalva">Valor inicial para soluções de escopo essencial. Preço final conforme a solução e as personalizações necessárias.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sobre" aria-labelledby="sobre-titulo">
+        <div class="container sobre__linha">
+          <div class="sobre__personagem">
+            <img src="assets/img/boy-540.webp" srcset="assets/img/boy-540.webp 540w, assets/img/boy-1080.webp 1080w" sizes="540px" alt="" width="540" height="360" loading="lazy">
+          </div>
+          <div class="sobre__proposta">
+            <h2 class="titulo-gradiente titulo-secao" id="sobre-titulo">Tecnologia com<br><span class="destaque">propósito e parceria</span></h2>
+            <p class="texto-corpo">Transformamos necessidades de negócio em soluções digitais.</p>
+          </div>
+          <ul class="diferenciais">
+            <li class="diferencial">
+              <img src="assets/img/icone-people.svg" alt="" width="96" height="96">
+              <span>Equipe<br>sênior</span>
+            </li>
+            <li class="diferencial">
+              <img src="assets/img/icone-scope.svg" alt="" width="96" height="96">
+              <span>Escopo<br>claro</span>
+            </li>
+            <li class="diferencial">
+              <img src="assets/img/icone-data.svg" alt="" width="96" height="96">
+              <span>Investimento<br>competitivo</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="produtos" id="produtos" aria-labelledby="produtos-titulo">
+        <div class="container produtos__conteudo">
+          <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="produtos-titulo">Produtos e <span class="destaque">serviços</span></h2>
+
+          <article class="destaque-card" aria-labelledby="personalizaveis-titulo">
+            <div class="destaque-card__encaixe">
+              <picture>
+                <source media="(min-width: 1024px)" srcset="assets/img/3d-390.webp 390w, assets/img/3d-780.webp 780w" sizes="390px">
+                <img class="destaque-card__3d" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="" width="390" height="300" loading="lazy">
+              </picture>
+            </div>
+            <div class="destaque-card__texto">
+              <p class="rotulo">SOLUÇÕES PERSONALIZÁVEIS</p>
+              <h3 class="destaque-card__titulo titulo-gradiente" id="personalizaveis-titulo">Sua solução sem<br><span class="destaque">começar do zero</span></h3>
+              <p class="texto-corpo destaque-card__descricao">Base adaptável à identidade e aos processos do seu negócio.</p>
+              <p class="texto-auxiliar">Consulte a disponibilidade.</p>
+            </div>
+            <img class="destaque-card__personagem" src="assets/img/girl-460.webp" srcset="assets/img/girl-460.webp 460w, assets/img/girl-920.webp 920w" sizes="460px" alt="" width="460" height="400" loading="lazy">
+          </article>
+
+          <ul class="ofertas">
+            <li class="oferta">
+              <img src="assets/img/icone-software.svg" alt="" width="80" height="80">
+              <div class="oferta__conteudo">
+                <h3 class="oferta__titulo">Software<br>sob medida</h3>
+                <p class="texto-corpo">Desenvolvido do zero para o seu negócio.</p>
+              </div>
+            </li>
+            <li class="oferta">
+              <img src="assets/img/icone-data.svg" alt="" width="80" height="80">
+              <div class="oferta__conteudo">
+                <h3 class="oferta__titulo">Dados e<br>dashboards</h3>
+                <p class="texto-corpo">Power BI e Excel para decisões mais claras.</p>
+              </div>
+            </li>
+            <li class="oferta">
+              <img src="assets/img/icone-automation.svg" alt="" width="80" height="80">
+              <div class="oferta__conteudo">
+                <h3 class="oferta__titulo">Automações<br>e integrações</h3>
+                <p class="texto-corpo">Conecte ferramentas. Simplifique sua rotina.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="como-funciona" id="como-funciona" aria-labelledby="como-funciona-titulo">
+        <div class="container como-funciona__conteudo">
+          <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="como-funciona-titulo">Como <span class="destaque">funciona</span></h2>
+          <ol class="etapas">
+            <li class="etapa">
+              <span class="etapa__icone">
+                <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
+                <img src="assets/img/icone-etapa-chat.svg" alt="" width="96" height="96">
+              </span>
+              <h3 class="etapa__titulo">1. Entendemos o que você precisa</h3>
+              <p class="texto-corpo">Conversamos sobre seu negócio, seus desafios, suas IDeias e as oportunidades de melhoria.</p>
+            </li>
+            <li class="etapa">
+              <span class="etapa__icone">
+                <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
+                <img src="assets/img/icone-etapa-scope.svg" alt="" width="96" height="96">
+              </span>
+              <h3 class="etapa__titulo">2. Definimos a solução com você</h3>
+              <p class="texto-corpo">Construímos com você uma IDeia de solução concreta, com escopo claro e foco no que seu negócio precisa para dar o próximo passo.</p>
+            </li>
+            <li class="etapa">
+              <span class="etapa__icone">
+                <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
+                <img src="assets/img/icone-etapa-rocket.svg" alt="" width="96" height="96">
+              </span>
+              <h3 class="etapa__titulo">3. Veja sua IDeia ganhar forma</h3>
+              <p class="texto-corpo">Com tudo alinhado, nossa equipe desenvolve a solução conforme o que combinamos.</p>
+            </li>
+          </ol>
+          <img class="etapas__conexao etapas__conexao--1" src="assets/img/conexao-etapa.svg" alt="" width="320" height="24">
+          <img class="etapas__conexao etapas__conexao--2" src="assets/img/conexao-etapa.svg" alt="" width="320" height="24">
+        </div>
+      </section>
+
+      <section class="contato" id="contato" aria-labelledby="contato-titulo">
+        <div class="container contato__linha">
+          <div class="contato__marca">
+            <img src="assets/img/duo-372.webp" srcset="assets/img/duo-372.webp 372w, assets/img/duo-744.webp 744w" sizes="372px" alt="" width="372" height="450" loading="lazy">
+            <img src="assets/img/logo-ideia.svg" alt="IDeia" width="269" height="101" loading="lazy">
+          </div>
+          <div class="contato__convite">
+            <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="contato-titulo">Vamos transformar<br>sua ideia em uma<br><span class="destaque">solução digital?</span></h2>
+            <a class="cta cta--final" href="https://wa.me/5582994059999">
+              <img class="cta__icone" src="assets/img/icone-whatsapp.svg" alt="" width="28" height="28">
+              <span class="cta__rotulo">
+                <span>Fale conosco</span>
+                <span class="cta__numero">WhatsApp · (82) 99405-9999</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="rodape container">
+      <img src="assets/img/logo-ideia.svg" alt="IDeia" width="140" height="53" loading="lazy">
+      <p class="rodape__assinatura">Sua ideia. Nosso código. Um novo futuro.</p>
+    </footer>
   </body>
 </html>

@@ -44,15 +44,14 @@
   --color-white: #ffffff; /* ícones e bordas de 1,575 px */
   --color-line-bright: #147ef2; /* borda de 1,2 px dos cards */
 
-  /*
-   * Gradientes usados no v09 sem variável no Figma (frame 61:402). Cores e
-   * paradas conferidas; o ângulo de cada uso é ajustado na H1 contra o frame.
-   */
+  /* Gradientes usados no v09 sem variável no Figma (frame 61:402), ângulos conferidos na H1 */
+  --color-mint: #19ef9d; /* início do gradiente dos títulos e borda do destaque */
   --gradient-brand: linear-gradient(90deg, #0038ff 0%, #00caff 48%, #00eab4 80%, #bcff39 100%);
-  --gradient-section: linear-gradient(180deg, #031e51 0%, #00123a 100%);
-  --gradient-card: linear-gradient(180deg, #052252 0%, #00163c 100%);
+  --gradient-titulo: linear-gradient(90deg, var(--color-mint) 0%, #14cdeb 45%, var(--color-violet) 100%);
+  --gradient-section: linear-gradient(90deg, #031e51 0%, #00123a 100%);
+  --gradient-card: linear-gradient(90deg, #052252 0%, #00163c 100%);
   --gradient-hero-fade: linear-gradient(
-    180deg,
+    90deg,
     rgb(0 18 56 / 100%) 0%,
     rgb(0 18 56 / 96%) 80%,
     rgb(0 18 56 / 0%) 100%
