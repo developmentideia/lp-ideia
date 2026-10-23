@@ -13,6 +13,18 @@
  * Sem tema claro na v1.
  */
 
+/*
+ * Manrope variável (pesos 400 a 800), subconjunto latino, um arquivo só (T4, IFI-20).
+ * Licença SIL OFL 1.1 em assets/fonts/OFL.txt.
+ */
+@font-face {
+  font-family: "Manrope";
+  src: url("../fonts/manrope-latin.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Cores: IDeia v08 / Interface (alias de IDeia v08 / Primitivos) */
   --color-bg: #001238;
