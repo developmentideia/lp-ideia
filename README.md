@@ -46,7 +46,7 @@ O workflow `.github/workflows/ci.yml` roda em todo pull request e em todo push n
 Para rodar a verificação de links localmente, instale o [lychee](https://lychee.cli.rs) e execute:
 
 ```sh
-lychee --offline --include-fragments './**/*.html'
+lychee --offline --include-fragments --exclude-path node_modules './**/*.html'
 ```
 
 ## Publicar
