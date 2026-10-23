@@ -36,6 +36,17 @@ npm install
 npm run validate
 ```
 
+## Imagens e ícones
+
+Os SVGs de `assets/img/` (logo e ícones) e o `favicon.svg` da raiz vêm do protótipo v09 no Figma. Para trocar um deles, exporte de novo o componente como SVG, salve por cima do arquivo com o mesmo nome e rode:
+
+```sh
+python3 scripts/otimizar-svg.py assets/img/icone-*.svg favicon.svg
+CASAS=3 python3 scripts/otimizar-svg.py assets/img/logo-ideia.svg assets/img/icone-whatsapp.svg
+```
+
+O script só arredonda coordenadas, renomeia os ids de gradiente e tira espaços; o desenho não muda.
+
 ## Checks do CI
 
 O workflow `.github/workflows/ci.yml` roda em todo pull request e em todo push na `main`, com dois checks:
