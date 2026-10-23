@@ -38,7 +38,9 @@ jobs:
         if: failure()
         run: |
           if [ -f lychee/out.md ]; then
-            grep -v '^\s*$' lychee/out.md | head -50 | while IFS= read -r linha; do echo "::error title=lychee::${linha}"; done
+            # O GitHub mostra no máximo 10 anotações de erro por etapa: só as linhas de link com falha.
+            grep -E '^\s*[*-] \[' lychee/out.md | head -10 | while IFS= read -r linha; do echo "::error title=Link quebrado::${linha}"; done
+            grep -qE '^\s*[*-] \[' lychee/out.md || echo "::error title=lychee::falhou sem link listado; veja o resumo do run"
           else
             echo "::error title=lychee::relatório lychee/out.md não foi gerado"
           fi
