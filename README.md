@@ -36,7 +36,18 @@ npm install
 npm run validate
 ```
 
-O mesmo comando roda no CI em todo pull request.
+## Checks do CI
+
+O workflow `.github/workflows/ci.yml` roda em todo pull request e em todo push na `main`, com dois checks:
+
+1. **Validar HTML:** `npm run validate` (html-validate, regras recomendadas).
+2. **Verificar links internos:** lychee em modo offline, que confere links e âncoras entre arquivos do próprio site sem acessar a internet.
+
+Para rodar a verificação de links localmente, instale o [lychee](https://lychee.cli.rs) e execute:
+
+```sh
+lychee --offline --include-fragments './**/*.html'
+```
 
 ## Publicar
 
