@@ -279,12 +279,6 @@ a {
   line-height: var(--lh-preco);
 }
 
-.preco__ressalva {
-  color: var(--color-muted);
-  font-size: var(--fs-auxiliar);
-  line-height: var(--lh-auxiliar);
-}
-
 /* 02 Sobre e diferenciais */
 
 .sobre {
@@ -379,11 +373,16 @@ a {
   line-height: var(--lh-h3-destaque);
 }
 
+/*
+ * A menina fica sempre apoiada na borda de baixo do card, como no Figma. O PNG
+ * tem 2,25% de margem transparente embaixo; o translate compensa essa margem.
+ */
 .destaque-card__personagem {
   position: relative;
   align-self: flex-end;
   width: 258px;
   max-width: 100%;
+  transform: translateY(2.25%);
 }
 
 /* "Luz de apoio / personagem" do 390: elipse azul desfocada atrás da menina */
@@ -662,8 +661,8 @@ a {
 
   .destaque-card__personagem {
     position: absolute;
-    top: -40px;
     right: -12px;
+    bottom: 0;
     width: 53%;
     max-width: 374px;
   }
@@ -895,7 +894,6 @@ a {
   }
 
   .destaque-card__personagem {
-    top: -3.45vw;
     right: auto;
     left: 64.9%;
     width: 35.9%;
