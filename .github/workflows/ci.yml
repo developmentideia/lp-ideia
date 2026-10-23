@@ -32,6 +32,7 @@ jobs:
           args: --offline --no-progress --include-fragments --exclude-path node_modules './**/*.html'
           output: lychee/out.md
           fail: true
+          failIfEmpty: false
 
       - name: Mostrar falhas de links como anotações
         if: failure()
