@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="assets/css/tokens.css">
     <link rel="stylesheet" href="assets/css/estilos.css">
     <script defer src="https://cdn.vercel-insights.com/v1/script.js"></script>
+    <script defer src="assets/js/movimento.js"></script>
   </head>
   <body>
     <header class="cabecalho container">
@@ -53,23 +54,23 @@
 
       <section class="sobre" aria-labelledby="sobre-titulo">
         <div class="container sobre__linha">
-          <div class="sobre__personagem">
+          <div class="sobre__personagem" data-anima>
             <img src="assets/img/boy-540.webp" srcset="assets/img/boy-540.webp 540w, assets/img/boy-1080.webp 1080w" sizes="(min-width: 1024px) 38vw, (min-width: 640px) 264px, calc(100vw - 48px)" alt="" width="540" height="360" loading="lazy">
           </div>
-          <div class="sobre__proposta">
+          <div class="sobre__proposta" data-anima>
             <h2 class="titulo-gradiente titulo-secao" id="sobre-titulo">Tecnologia com<br><span class="destaque">propósito e parceria</span></h2>
             <p class="texto-corpo">Transformamos necessidades de negócio em soluções digitais.</p>
           </div>
           <ul class="diferenciais">
-            <li class="diferencial">
+            <li class="diferencial" data-anima>
               <img src="assets/img/icone-people.svg" alt="" width="96" height="96">
               <span>Equipe<br>sênior</span>
             </li>
-            <li class="diferencial">
+            <li class="diferencial" data-anima>
               <img src="assets/img/icone-scope.svg" alt="" width="96" height="96">
               <span>Escopo<br>claro</span>
             </li>
-            <li class="diferencial">
+            <li class="diferencial" data-anima>
               <img src="assets/img/icone-data.svg" alt="" width="96" height="96">
               <span>Investimento<br>competitivo</span>
             </li>
@@ -81,7 +82,7 @@
         <div class="container produtos__conteudo">
           <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="produtos-titulo">Produtos e <span class="destaque">serviços</span></h2>
 
-          <article class="destaque-card" aria-labelledby="personalizaveis-titulo">
+          <article class="destaque-card" data-anima aria-labelledby="personalizaveis-titulo">
             <div class="destaque-card__encaixe">
               <picture>
                 <source media="(min-width: 1024px)" srcset="assets/img/3d-390.webp 390w, assets/img/3d-780.webp 780w" sizes="28vw">
@@ -100,21 +101,21 @@
           </article>
 
           <ul class="ofertas">
-            <li class="oferta">
+            <li class="oferta" data-anima>
               <img src="assets/img/icone-software.svg" alt="" width="80" height="80">
               <div class="oferta__conteudo">
                 <h3 class="oferta__titulo">Software<br>sob medida</h3>
                 <p class="texto-corpo">Desenvolvido do zero para o seu negócio.</p>
               </div>
             </li>
-            <li class="oferta">
+            <li class="oferta" data-anima>
               <img src="assets/img/icone-data.svg" alt="" width="80" height="80">
               <div class="oferta__conteudo">
                 <h3 class="oferta__titulo">Dados e<br>dashboards</h3>
                 <p class="texto-corpo">Power BI e Excel para decisões mais claras.</p>
               </div>
             </li>
-            <li class="oferta">
+            <li class="oferta" data-anima>
               <img src="assets/img/icone-automation.svg" alt="" width="80" height="80">
               <div class="oferta__conteudo">
                 <h3 class="oferta__titulo">Automações<br>e integrações</h3>
@@ -129,7 +130,7 @@
         <div class="container como-funciona__conteudo">
           <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="como-funciona-titulo">Como <span class="destaque">funciona</span></h2>
           <ol class="etapas">
-            <li class="etapa">
+            <li class="etapa" data-anima>
               <span class="etapa__icone">
                 <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
                 <img src="assets/img/icone-etapa-chat.svg" alt="" width="96" height="96">
@@ -137,7 +138,7 @@
               <h3 class="etapa__titulo">1. Entendemos o que você precisa</h3>
               <p class="texto-corpo">Conversamos sobre seu negócio, seus desafios, suas IDeias e as oportunidades de melhoria.</p>
             </li>
-            <li class="etapa">
+            <li class="etapa" data-anima>
               <span class="etapa__icone">
                 <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
                 <img src="assets/img/icone-etapa-scope.svg" alt="" width="96" height="96">
@@ -145,7 +146,7 @@
               <h3 class="etapa__titulo">2. Definimos a solução com você</h3>
               <p class="texto-corpo">Construímos com você uma IDeia de solução concreta, com escopo claro e foco no que seu negócio precisa para dar o próximo passo.</p>
             </li>
-            <li class="etapa">
+            <li class="etapa" data-anima>
               <span class="etapa__icone">
                 <img class="etapa__orbita" src="assets/img/orbita-etapa.svg" alt="" width="128" height="112">
                 <img src="assets/img/icone-etapa-rocket.svg" alt="" width="96" height="96">
@@ -159,11 +160,11 @@
 
       <section class="contato" id="contato" aria-labelledby="contato-titulo">
         <div class="container contato__linha">
-          <div class="contato__marca">
+          <div class="contato__marca" data-anima>
             <img class="contato__dupla" src="assets/img/duo-372.webp" srcset="assets/img/duo-372.webp 372w, assets/img/duo-744.webp 744w" sizes="(min-width: 1024px) 29vw, (min-width: 640px) 394px, 191px" alt="" width="372" height="450" loading="lazy">
             <img class="contato__logo" src="assets/img/logo-ideia.svg" alt="IDeia" width="269" height="101" loading="lazy">
           </div>
-          <div class="contato__convite">
+          <div class="contato__convite" data-anima>
             <h2 class="titulo-gradiente titulo-secao titulo-secao--centro" id="contato-titulo">Vamos transformar<br class="quebra-fora-tablet"> sua ideia em uma<br><span class="destaque">solução digital?</span></h2>
             <a class="cta cta--final" href="https://wa.me/5582994059999">
               <img class="cta__icone" src="assets/img/icone-whatsapp.png" alt="" width="28" height="28">

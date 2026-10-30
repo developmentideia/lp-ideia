@@ -148,6 +148,28 @@
 
   /* Alvo mínimo de toque (CA-13) */
   --target-min: 2.75rem; /* 44 px */
+
+  /*
+   * Movimento (LP v2, IFI-65). Todas as animações da página usam só estes
+   * valores; páginas novas (ebooks) devem reaproveitá-los.
+   */
+  --motion-dur-rapida: 180ms; /* estados de botão, link e card */
+  --motion-dur-media: 640ms; /* entrada ao rolar */
+  --motion-dur-longa: 900ms; /* linha entre as etapas */
+  --motion-dur-brilho: 1200ms; /* brilho único do CTA principal */
+  --motion-ciclo-curto: 5s; /* loop que para sozinho em até 5 s (WCAG 2.2.2) */
+  --motion-ciclo-flutuacao: 6s; /* opção de loop contínuo, só na prévia */
+  --motion-ciclo-orbita: 12s; /* opção de loop contínuo, só na prévia */
+  --motion-escalonamento: 110ms; /* intervalo entre itens que entram juntos */
+  --motion-escalonamento-etapas: 280ms;
+  --motion-distancia-entrada: 1.5rem; /* 24 px de subida na entrada */
+  --motion-distancia-flutuacao: 0.5rem; /* 8 px de flutuação */
+  --motion-elevacao-card: -0.25rem; /* 4 px para cima no hover */
+  --motion-curva-saida: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-curva-padrao: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Cores dos efeitos de movimento */
+  --color-brilho-cta: rgb(255 255 255 / 22%);
 }
 
 /*

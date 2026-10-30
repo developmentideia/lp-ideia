@@ -24,7 +24,13 @@
 
 html {
   -webkit-text-size-adjust: 100%;
-  scroll-behavior: smooth;
+}
+
+/* Rolagem suave só para quem não pediu movimento reduzido (RF-07) */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 body {
@@ -995,4 +1001,232 @@ a {
   :root {
     --gutter: 80px;
   }
+}
+
+/*
+ * 07 Movimento (LP v2, IFI-65 / IFI-66)
+ *
+ * Regras:
+ * - Só transform, translate, rotate e opacity são animados.
+ * - As entradas ao rolar só existem com a classe .movimento-ativo, que o
+ *   assets/js/movimento.js coloca no <html>. Sem JavaScript, tudo aparece na
+ *   posição final (RF-01).
+ * - Abertura nunca começa invisível (RF-02).
+ * - Com "reduzir movimento" no sistema, sobra só fade curto (RF-07).
+ * - Loops param sozinhos em até 5 s (padrão). Na prévia, ?loops=continuo e
+ *   ?orbita=pulso mostram as alternativas para a PO decidir.
+ */
+
+/* Estados interativos (RF-04): transição de cor vale para todos */
+
+.cta,
+.cabecalho__link {
+  transition:
+    background-color var(--motion-dur-rapida) var(--motion-curva-padrao),
+    color var(--motion-dur-rapida) var(--motion-curva-padrao);
+}
+
+/* Brilho dos cards no hover: camada por cima, só a opacidade muda */
+.oferta,
+.destaque-card {
+  position: relative;
+}
+
+.oferta::after,
+.destaque-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: var(--shadow-glow-card);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-dur-rapida) var(--motion-curva-padrao);
+}
+
+@media (hover: hover) {
+  .oferta:hover::after,
+  .destaque-card:hover::after {
+    opacity: 1;
+  }
+}
+
+@keyframes movimento-flutuar {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 calc(-1 * var(--motion-distancia-flutuacao));
+  }
+}
+
+@keyframes movimento-orbita-girar {
+  to {
+    rotate: 1turn;
+  }
+}
+
+@keyframes movimento-orbita-pulsar {
+  0%,
+  100% {
+    opacity: 1;
+    scale: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+    scale: 1.06;
+  }
+}
+
+@keyframes movimento-brilho {
+  from {
+    translate: -110% 0;
+  }
+
+  to {
+    translate: 110% 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Entrada ao rolar (RF-03). --atraso vem do script quando itens entram juntos. */
+  .movimento-ativo [data-anima] {
+    opacity: 0;
+    transform: translateY(var(--motion-distancia-entrada));
+    transition:
+      opacity var(--motion-dur-media) var(--motion-curva-saida),
+      transform var(--motion-dur-media) var(--motion-curva-saida),
+      translate var(--motion-dur-rapida) var(--motion-curva-padrao);
+    transition-delay: var(--atraso, 0ms), var(--atraso, 0ms), 0ms;
+  }
+
+  .movimento-ativo [data-anima].visivel {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Cards sobem um pouco no hover; translate não briga com o transform da entrada */
+  .oferta,
+  .destaque-card {
+    transition: translate var(--motion-dur-rapida) var(--motion-curva-padrao);
+  }
+
+  @media (hover: hover) {
+    .oferta:hover,
+    .destaque-card:hover {
+      translate: 0 var(--motion-elevacao-card);
+    }
+  }
+
+  /* Abertura (RF-02): ilustração flutua, CTA principal recebe um brilho */
+  .abertura__ilustracao img {
+    animation: movimento-flutuar var(--motion-ciclo-curto) var(--motion-curva-padrao) 1;
+  }
+
+  .cta--principal {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta--principal::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(100deg, transparent 30%, var(--color-brilho-cta) 50%, transparent 70%);
+    translate: -110% 0;
+    pointer-events: none;
+    animation: movimento-brilho var(--motion-dur-brilho) var(--motion-curva-padrao) 700ms 1 both;
+  }
+
+  /* Contato (RF-06): dupla flutua quando a seção aparece, defasada do hero */
+  .movimento-ativo .contato__marca.visivel .contato__dupla {
+    animation: movimento-flutuar var(--motion-ciclo-curto) var(--motion-curva-padrao) 400ms 1;
+  }
+
+  /* Como funciona (RF-05): órbita gira uma volta quando a etapa aparece */
+  .etapa__icone .etapa__orbita {
+    transform-origin: 50% 42.857%; /* centro do círculo: (64, 48) na caixa 128 x 112 */
+  }
+
+  .movimento-ativo .etapa.visivel .etapa__orbita {
+    animation: movimento-orbita-girar var(--motion-ciclo-curto) var(--motion-curva-padrao)
+      calc(var(--atraso, 0ms) + var(--motion-dur-media)) 1;
+  }
+
+  [data-orbita="pulso"].movimento-ativo .etapa.visivel .etapa__orbita {
+    animation-name: movimento-orbita-pulsar;
+  }
+
+  /* Setas (celular e tablet) e linha (computador) aparecem depois da etapa */
+  .movimento-ativo .etapa:not(:last-child)::after {
+    opacity: 0;
+    transform: translateY(calc(-1 * var(--motion-distancia-flutuacao)));
+    transition:
+      opacity var(--motion-dur-media) var(--motion-curva-saida),
+      transform var(--motion-dur-media) var(--motion-curva-saida);
+    transition-delay: calc(var(--atraso, 0ms) + var(--motion-dur-media));
+  }
+
+  .movimento-ativo .etapa.visivel:not(:last-child)::after {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Opção da prévia: loops contínuos, para comparar com o padrão de 5 s */
+  [data-loops="continuo"] .abertura__ilustracao img,
+  [data-loops="continuo"].movimento-ativo .contato__marca.visivel .contato__dupla {
+    animation-duration: var(--motion-ciclo-flutuacao);
+    animation-iteration-count: infinite;
+  }
+
+  [data-loops="continuo"].movimento-ativo .etapa.visivel .etapa__orbita {
+    animation-duration: var(--motion-ciclo-orbita);
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+  }
+
+  [data-loops="continuo"][data-orbita="pulso"].movimento-ativo .etapa.visivel .etapa__orbita {
+    animation-duration: var(--motion-ciclo-flutuacao);
+    animation-timing-function: var(--motion-curva-padrao);
+  }
+}
+
+/* Computador: a linha entre as etapas se revela da esquerda para a direita */
+@media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
+  .movimento-ativo .etapa:not(:last-child)::after {
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition-duration: var(--motion-dur-media), var(--motion-dur-longa);
+  }
+}
+
+/* Movimento reduzido (RF-07): só fade curto nas entradas, nada mais se move */
+@media (prefers-reduced-motion: reduce) {
+  .movimento-ativo [data-anima],
+  .movimento-ativo .etapa:not(:last-child)::after {
+    opacity: 0;
+    transition: opacity var(--motion-dur-rapida) linear;
+  }
+
+  .movimento-ativo [data-anima].visivel,
+  .movimento-ativo .etapa.visivel:not(:last-child)::after {
+    opacity: 1;
+  }
+}
+
+/* Impressão: nada pode ficar invisível esperando rolagem */
+@media print {
+  .movimento-ativo [data-anima],
+  .movimento-ativo .etapa:not(:last-child)::after {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* As etapas entram mais espaçadas que os cards, para ler 1, 2, 3 */
+.etapas {
+  --motion-escalonamento: var(--motion-escalonamento-etapas);
 }
