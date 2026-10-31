@@ -582,8 +582,10 @@ a {
     --secao-py: 48px;
   }
 
+  /* Fundo do frame 1440 exportado em 2x (IFI-68); 1600 px para telas de alta densidade */
   body {
-    background-image: url("../img/fundo-768.webp");
+    background-image: url("../img/fundo-800.webp");
+    background-image: image-set(url("../img/fundo-800.webp") 1x, url("../img/fundo-1600.webp") 2x);
   }
 
   .cabecalho {
@@ -743,7 +745,8 @@ a {
   }
 
   body {
-    background: var(--color-bg) url("../img/fundo-desktop.webp") top center / cover no-repeat;
+    background: var(--color-bg) url("../img/fundo-1920.webp") top center / cover no-repeat;
+    background-image: image-set(url("../img/fundo-1920.webp") 1x, url("../img/fundo-2880.webp") 2x);
   }
 
   .so-desktop {
