@@ -63,4 +63,12 @@
       observador.observe(alvo);
     }
   });
+
+  // Personagens da abertura: o balanço contínuo pausa quando a abertura sai da tela (IFI-68).
+  var abertura = document.querySelector(".abertura");
+  if (abertura) {
+    new IntersectionObserver(function (entradas) {
+      raiz.classList.toggle("abertura-fora", !entradas[0].isIntersecting);
+    }).observe(abertura);
+  }
 })();

@@ -1014,6 +1014,8 @@ a {
  * - Abertura nunca começa invisível (RF-02).
  * - Com "reduzir movimento" no sistema, sobra só fade curto (RF-07).
  * - Loops param sozinhos em até 5 s (WCAG 2.2.2), decisão da PO em 30/10/2026.
+ *   Exceção em revisão (IFI-68): personagens da abertura em loop contínuo,
+ *   pausado fora da tela.
  */
 
 /* Estados interativos (RF-04): transição de cor vale para todos */
@@ -1068,8 +1070,9 @@ a {
 }
 
 /*
- * Personagens da abertura: dois balanços dentro dos mesmos 5 s, o primeiro
- * maior, com leve inclinação, para o movimento ficar perceptível sem loop.
+ * Personagens da abertura: balanço contínuo e suave (IFI-68). Pausa quando a
+ * abertura sai da tela (classe .abertura-fora, do movimento.js) e some com
+ * "reduzir movimento".
  */
 @keyframes movimento-flutuar-hero {
   0%,
@@ -1078,19 +1081,9 @@ a {
     rotate: 0deg;
   }
 
-  25% {
-    translate: 0 calc(-1 * var(--motion-distancia-flutuacao-hero));
-    rotate: -0.6deg;
-  }
-
   50% {
-    translate: 0 0;
-    rotate: 0deg;
-  }
-
-  75% {
-    translate: 0 calc(-0.6 * var(--motion-distancia-flutuacao-hero));
-    rotate: 0.4deg;
+    translate: 0 calc(-1 * var(--motion-distancia-flutuacao-hero));
+    rotate: -0.8deg;
   }
 }
 
@@ -1137,7 +1130,11 @@ a {
   /* Abertura (RF-02): ilustração flutua, CTA principal recebe um brilho */
   .abertura__ilustracao img {
     transform-origin: 50% 100%;
-    animation: movimento-flutuar-hero var(--motion-ciclo-curto) var(--motion-curva-padrao) 300ms 1;
+    animation: movimento-flutuar-hero var(--motion-ciclo-hero) ease-in-out 300ms infinite;
+  }
+
+  .abertura-fora .abertura__ilustracao img {
+    animation-play-state: paused;
   }
 
   .cta--principal {
