@@ -158,8 +158,6 @@
   --motion-dur-longa: 900ms; /* linha entre as etapas */
   --motion-dur-brilho: 1200ms; /* brilho único do CTA principal */
   --motion-ciclo-curto: 5s; /* loop que para sozinho em até 5 s (WCAG 2.2.2) */
-  --motion-ciclo-flutuacao: 6s; /* opção de loop contínuo, só na prévia */
-  --motion-ciclo-orbita: 12s; /* opção de loop contínuo, só na prévia */
   --motion-escalonamento: 110ms; /* intervalo entre itens que entram juntos */
   --motion-escalonamento-etapas: 280ms;
   --motion-distancia-entrada: 1.5rem; /* 24 px de subida na entrada */

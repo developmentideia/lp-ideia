@@ -14,20 +14,6 @@
 
   var raiz = document.documentElement;
 
-  /*
-   * Só na prévia, para a PO comparar as alternativas registradas no PRD:
-   *   ?loops=continuo  flutuação e órbita sem parar
-   *   ?orbita=pulso    órbita pulsa em vez de girar
-   * Remover este bloco quando a decisão estiver registrada no IFI-66.
-   */
-  var parametros = new URLSearchParams(window.location.search);
-  if (parametros.get("loops") === "continuo") {
-    raiz.setAttribute("data-loops", "continuo");
-  }
-  if (parametros.get("orbita") === "pulso") {
-    raiz.setAttribute("data-orbita", "pulso");
-  }
-
   if (!("IntersectionObserver" in window)) {
     return;
   }

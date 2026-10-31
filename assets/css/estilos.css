@@ -1013,8 +1013,7 @@ a {
  *   posição final (RF-01).
  * - Abertura nunca começa invisível (RF-02).
  * - Com "reduzir movimento" no sistema, sobra só fade curto (RF-07).
- * - Loops param sozinhos em até 5 s (padrão). Na prévia, ?loops=continuo e
- *   ?orbita=pulso mostram as alternativas para a PO decidir.
+ * - Loops param sozinhos em até 5 s (WCAG 2.2.2), decisão da PO em 30/10/2026.
  */
 
 /* Estados interativos (RF-04): transição de cor vale para todos */
@@ -1065,19 +1064,6 @@ a {
 @keyframes movimento-orbita-girar {
   to {
     rotate: 1turn;
-  }
-}
-
-@keyframes movimento-orbita-pulsar {
-  0%,
-  100% {
-    opacity: 1;
-    scale: 1;
-  }
-
-  50% {
-    opacity: 0.6;
-    scale: 1.06;
   }
 }
 
@@ -1156,10 +1142,6 @@ a {
       calc(var(--atraso, 0ms) + var(--motion-dur-media)) 1;
   }
 
-  [data-orbita="pulso"].movimento-ativo .etapa.visivel .etapa__orbita {
-    animation-name: movimento-orbita-pulsar;
-  }
-
   /* Setas (celular e tablet) e linha (computador) aparecem depois da etapa */
   .movimento-ativo .etapa:not(:last-child)::after {
     opacity: 0;
@@ -1173,24 +1155,6 @@ a {
   .movimento-ativo .etapa.visivel:not(:last-child)::after {
     opacity: 1;
     transform: none;
-  }
-
-  /* Opção da prévia: loops contínuos, para comparar com o padrão de 5 s */
-  [data-loops="continuo"] .abertura__ilustracao img,
-  [data-loops="continuo"].movimento-ativo .contato__marca.visivel .contato__dupla {
-    animation-duration: var(--motion-ciclo-flutuacao);
-    animation-iteration-count: infinite;
-  }
-
-  [data-loops="continuo"].movimento-ativo .etapa.visivel .etapa__orbita {
-    animation-duration: var(--motion-ciclo-orbita);
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-  }
-
-  [data-loops="continuo"][data-orbita="pulso"].movimento-ativo .etapa.visivel .etapa__orbita {
-    animation-duration: var(--motion-ciclo-flutuacao);
-    animation-timing-function: var(--motion-curva-padrao);
   }
 }
 
