@@ -582,8 +582,10 @@ a {
     --secao-py: 48px;
   }
 
+  /* Fundo do frame 1440 exportado em 2x (IFI-68); 1600 px para telas de alta densidade */
   body {
-    background-image: url("../img/fundo-768.webp");
+    background-image: url("../img/fundo-800.webp");
+    background-image: image-set(url("../img/fundo-800.webp") 1x, url("../img/fundo-1600.webp") 2x);
   }
 
   .cabecalho {
@@ -743,7 +745,8 @@ a {
   }
 
   body {
-    background: var(--color-bg) url("../img/fundo-desktop.webp") top center / cover no-repeat;
+    background: var(--color-bg) url("../img/fundo-1920.webp") top center / cover no-repeat;
+    background-image: image-set(url("../img/fundo-1920.webp") 1x, url("../img/fundo-2880.webp") 2x);
   }
 
   .so-desktop {
@@ -1014,6 +1017,8 @@ a {
  * - Abertura nunca começa invisível (RF-02).
  * - Com "reduzir movimento" no sistema, sobra só fade curto (RF-07).
  * - Loops param sozinhos em até 5 s (WCAG 2.2.2), decisão da PO em 30/10/2026.
+ *   Exceção em revisão (IFI-68): personagens da abertura em loop contínuo,
+ *   pausado fora da tela.
  */
 
 /* Estados interativos (RF-04): transição de cor vale para todos */
@@ -1067,6 +1072,24 @@ a {
   }
 }
 
+/*
+ * Personagens da abertura: balanço contínuo e suave (IFI-68). Pausa quando a
+ * abertura sai da tela (classe .abertura-fora, do movimento.js) e some com
+ * "reduzir movimento".
+ */
+@keyframes movimento-flutuar-hero {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+
+  50% {
+    translate: 0 calc(-1 * var(--motion-distancia-flutuacao-hero));
+    rotate: -0.8deg;
+  }
+}
+
 @keyframes movimento-brilho {
   from {
     translate: -110% 0;
@@ -1109,7 +1132,12 @@ a {
 
   /* Abertura (RF-02): ilustração flutua, CTA principal recebe um brilho */
   .abertura__ilustracao img {
-    animation: movimento-flutuar var(--motion-ciclo-curto) var(--motion-curva-padrao) 1;
+    transform-origin: 50% 100%;
+    animation: movimento-flutuar-hero var(--motion-ciclo-hero) ease-in-out 300ms infinite;
+  }
+
+  .abertura-fora .abertura__ilustracao img {
+    animation-play-state: paused;
   }
 
   .cta--principal {

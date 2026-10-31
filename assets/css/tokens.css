@@ -162,6 +162,8 @@
   --motion-escalonamento-etapas: 280ms;
   --motion-distancia-entrada: 1.5rem; /* 24 px de subida na entrada */
   --motion-distancia-flutuacao: 0.5rem; /* 8 px de flutuação */
+  --motion-distancia-flutuacao-hero: 1rem; /* 16 px nos personagens da abertura (IFI-68) */
+  --motion-ciclo-hero: 4s; /* um balanço completo, contínuo (IFI-68) */
   --motion-elevacao-card: -0.25rem; /* 4 px para cima no hover */
   --motion-curva-saida: cubic-bezier(0.22, 1, 0.36, 1);
   --motion-curva-padrao: cubic-bezier(0.4, 0, 0.2, 1);

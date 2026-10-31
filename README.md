@@ -55,6 +55,8 @@ As ilustrações (`hero`, `boy`, `girl`, `duo`, `3d`) ficam em WebP, em duas lar
 python3 scripts/gerar-webp.py <pasta-com-os-png>
 ```
 
+O fundo da página a partir de 768 px (`fundo-800`, `fundo-1600`, `fundo-1920` e `fundo-2880`) vem da camada de fundo do frame de 1440, exportada sozinha (sem textos nem personagens) em PNG 2x, salva como `fundo.png` na mesma pasta e processada pelo mesmo script. O CSS escolhe a versão pela densidade da tela com `image-set`. O `fundo-390.webp` do celular é outro recorte e não sai desse script.
+
 A imagem de compartilhamento `assets/img/og-ideia.jpg` (1200 × 630) é um print de `scripts/og/og.html`, que junta a hero e o logo. Se a hero ou o logo mudarem, abra essa página no servidor local com a janela em 1200 × 630, tire o print e salve como JPG.
 
 ## Fonte

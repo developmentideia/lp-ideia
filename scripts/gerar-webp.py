@@ -6,7 +6,7 @@ Uso (precisa de Pillow: pip install pillow):
 Exporte do Figma, na página "LP IDeia · v09 · 5 breakpoints", frame de 1440,
 cada camada "Ilustração / ..." em PNG 2x (a hero é "Ilustração / personagens
 com computadores · transparente"), com o nome do arquivo igual à chave
-de LARGURAS (hero.png, boy.png, girl.png, duo.png, 3d.png). Exceção: o boy
+de LARGURAS (hero.png, boy.png, girl.png, duo.png, 3d.png, fundo.png). Exceção: o boy
 sai cortado do frame 1440; exporte o componente "IDeia DS/Asset/Menino" da
 página "IDeia · Design System v1" (PNG de 1080 x 720).
 
@@ -24,7 +24,12 @@ LARGURAS = {
     "girl": [460, 920],
     "duo": [372, 744],
     "3d": [390, 780],
+    # Fundo da página a partir de 768 px (IFI-68): camada de fundo do frame 1440
+    # exportada sozinha em PNG 2x (2880 x 7186), sem textos nem personagens.
+    # 800 e 1600 para o tablet (1x e 2x), 1920 e 2880 para o computador.
+    "fundo": [800, 1600, 1920, 2880],
 }
+OPACAS = {"fundo"}  # sem transparência: salva em RGB, qualidade 85 para não perder as estrelas pequenas
 DESTINO = os.path.join(os.path.dirname(__file__), "..", "assets", "img")
 
 pasta = sys.argv[1]
@@ -40,5 +45,8 @@ for nome, larguras in LARGURAS.items():
             continue
         h = round(im.height * w / im.width)
         saida = os.path.join(DESTINO, f"{nome}-{w}.webp")
-        im.resize((w, h), Image.LANCZOS).save(saida, "WEBP", quality=80, method=6, alpha_quality=90)
+        if nome in OPACAS:
+            im.convert("RGB").resize((w, h), Image.LANCZOS).save(saida, "WEBP", quality=85, method=6)
+        else:
+            im.resize((w, h), Image.LANCZOS).save(saida, "WEBP", quality=80, method=6, alpha_quality=90)
         print(f"{nome}-{w}.webp  {w}x{h}  {os.path.getsize(saida) / 1024:.1f} KB")
